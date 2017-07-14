@@ -1,0 +1,13 @@
+(ns clojure-noob.core
+  (:gen-class))
+
+
+(defn add [x y]
+   (+ x y))
+
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& args]
+  (println "Hello My name is Rupesh Chavan")
+  (println (add 2 3)))
+
