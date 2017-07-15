@@ -59,3 +59,10 @@
 (expect/expect [[1 2] [3 4]] (my-into [] {1 2, 3 4}))
 
 (expect/expect [1 2 3 4 5 6] (my-into [1 2 3] '(4 5 6)))
+
+
+(expect/expect 10 (sum [1 2 3 4]))
+
+(expect/expect 10 (sum [1 2 3 4]))
+
+(expect/expect "This is my text, LOL" (xyz "This is my text, lol"))
