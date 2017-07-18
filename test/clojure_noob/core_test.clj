@@ -66,3 +66,28 @@
 (expect/expect 10 (sum [1 2 3 4]))
 
 (expect/expect "This is my text, LOL" (xyz "This is my text, lol"))
+
+
+                                        ;test for project euler problems
+
+(expect/expect 23 (mul 10))
+
+(expect/expect 0 (mul 1))
+
+
+
+(expect/expect 4613732 a)
+
+(expect/expect 29 (prime-factors 13195))
+
+(expect/expect 6857 (prime-factors 600851475143))
+
+(expect/expect 173 (prime-factors (* 113 173)))
+
+(expect/expect 2 (gcd 4 6))
+
+(expect/expect 2520 (reduce lcm (range 1 10)))
+
+(expect/expect 2640 (final 10))
+
+(expect/expect 25164150 (final 100))

@@ -265,3 +265,101 @@
 
 
 (def my-board (assoc-in (new-board 5) [4 :pegged] false))
+
+
+
+
+                                        ;problem 1 Multiples of 3 and 5
+
+(defn mul
+  [n]
+  (reduce + (filter #(zero? (min (mod % 3) (mod % 5))) (range n))))
+
+                                        ;even fibo numbers
+
+
+(defn fibo
+  ([]
+   (fibo 1 1))
+  ([a b]
+   (lazy-seq (cons a (fibo b (+ a b))))))
+
+
+(def a (reduce + (take-while #(<= % 4000000) (filter even? (fibo)))))
+
+
+                                        ;Largest prime factor
+
+#_(defn factor
+  [n]
+  (primefact []  (filter (fn [x] (if (= (mod n x) 0) x)) (range 1 n))))
+
+
+#_(defn primefact
+  [in out]
+  (if (empty? out)
+    in
+    (recur (if (= true (prime? first out))
+             (conj in (first out)))
+           (rest out))))
+
+
+
+#_(defn prime? [n]
+  (= 2 (reduce +
+               (for [i (range 1 (inc (n)))]
+                 (if (= 0 (mod (n) i)) 1 0)))))
+
+(defn prime-factors [n]
+  (loop [n n
+         div 2
+         factors []]
+    (if (< n 2)
+      (last factors)
+      (if (= 0 (rem n div))
+        (recur (/ n div)
+               div
+               (conj factors div))
+        (recur n
+               (inc div)
+               factors)))))
+
+
+                                        ;Largest palindrome product
+
+(defn palin? [s]
+  (if (= (str s) (apply str (reverse (str s))))
+    true
+    false))
+;remaining
+
+                                        ; smallest multiple
+
+
+(defn gcd
+  [x y]
+  (if (zero? y)
+    x
+    (recur y (mod x y))))
+
+(defn lcm [a b]
+  (/ (* a b) (gcd a b)))
+
+(reduce lcm (range 1 20))
+
+
+                                        ;sum square difference
+
+
+(defn exp [x n]
+  (if (zero? n) 1
+      (* x (exp x (dec n)))))
+
+
+(defn sum-of-square
+  [n]
+  (reduce + (map #(* % %) (range 1 (inc n)))))
+
+(defn final
+  [n]
+  (- (exp (reduce + (range 1 (+ n 1))) 2) (sum-of-square n)))
